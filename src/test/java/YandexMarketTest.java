@@ -34,6 +34,6 @@ public class YandexMarketTest extends BaseSteps {
         tvListSteps.checkTvListStep(12);
         tvListSteps.rememberTvTitleStep(1);
         tvListSteps.findSavedValueStep();
-
+        tvListSteps.checkElementTitleEqualsSavedValueStep();
     }
 }

@@ -33,7 +33,13 @@ public class TvListSteps extends ScenarioSteps {
         tvListPage.rememberTvTitle(elementNumber);
     }
 
+    @Step("ищет запомненный элемент из списка")
     public void findSavedValueStep() {
         tvListPage.findSavedValue();
+    }
+
+    @Step("проверяет, что наименование товара соответствует запомненному значению")
+    public void checkElementTitleEqualsSavedValueStep() {
+        tvListPage.checkElementTitleEqualsSavedValue();
     }
 }

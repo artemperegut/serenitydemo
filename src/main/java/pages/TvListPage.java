@@ -1,10 +1,11 @@
 package pages;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class TvListPage extends BasePageObject {
 
@@ -25,6 +26,12 @@ public class TvListPage extends BasePageObject {
     @FindBy(xpath = "//span[@class='search2__button']/button")
     WebElement searchButton;
 
+    @FindBy(xpath = "//span[@class='snippet-card__header-text']")
+    List<WebElement> tvList;
+
+    @FindBy(xpath = "//h1[@itemprop='name']")
+    WebElement tvTitle;
+
     public void selectProducer(String itemName) {
         producers.findElement(By.xpath("//label[text()='" + itemName + "']")).click();
     }
@@ -38,15 +45,19 @@ public class TvListPage extends BasePageObject {
     }
 
     public void checkTvList(int number) {
-        Assert.assertEquals(ThucydidesWebDriverSupport.getDriver().findElements(By.xpath("//span[@class='snippet-card__header-text']")).size(), number);
+        Assert.assertEquals(tvList.size(), number);
     }
 
     public void rememberTvTitle(int elementNumber) {
-        savedValue = ThucydidesWebDriverSupport.getDriver().findElements(By.xpath("//span[@class='snippet-card__header-text']")).get(elementNumber - 1).getText();
+        savedValue = tvList.get(elementNumber - 1).getText();
     }
 
     public void findSavedValue() {
         searchInput.sendKeys(savedValue);
         searchButton.click();
+    }
+
+    public void checkElementTitleEqualsSavedValue() {
+        Assert.assertEquals(tvTitle.getText(), savedValue);
     }
 }
