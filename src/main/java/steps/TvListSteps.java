@@ -27,4 +27,13 @@ public class TvListSteps extends ScenarioSteps {
     public void checkTvListStep(int number) {
         tvListPage.checkTvList(number);
     }
+
+    @Step("запоминает {0} элемент списка")
+    public void rememberTvTitleStep(int elementNumber) {
+        tvListPage.rememberTvTitle(elementNumber);
+    }
+
+    public void findSavedValueStep() {
+        tvListPage.findSavedValue();
+    }
 }
