@@ -29,7 +29,7 @@ public class TvListPage {
         confirmButton.click();
     }
 
-    public void checkTvList() {
-        Assert.assertEquals(ThucydidesWebDriverSupport.getDriver().findElements(By.xpath("//span[@class='snippet-card__header-text']")).size(), 12);
+    public void checkTvList(int number) {
+        Assert.assertEquals(ThucydidesWebDriverSupport.getDriver().findElements(By.xpath("//span[@class='snippet-card__header-text']")).size(), number);
     }
 }
