@@ -5,9 +5,6 @@ import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by Maria on 06.05.2017.
- */
 public abstract class BasePageObject extends PageObject {
 
     public BasePageObject() {
@@ -15,9 +12,8 @@ public abstract class BasePageObject extends PageObject {
         PageFactory.initElements(ThucydidesWebDriverSupport.getDriver(), this);
     }
 
-    public void fillField(WebElement field, String value){
+    public void fillField(WebElement field, String value) {
         field.clear();
         field.sendKeys(value);
     }
-
 }

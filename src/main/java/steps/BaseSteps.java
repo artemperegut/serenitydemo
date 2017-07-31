@@ -7,10 +7,6 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Maria on 29.07.2017.
- */
-
 public class BaseSteps {
 
     @Managed(driver = "chrome")
@@ -28,5 +24,4 @@ public class BaseSteps {
     public void afterMethod(){
         driver.quit();
     }
-
 }

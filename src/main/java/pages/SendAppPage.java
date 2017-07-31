@@ -6,11 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
-/**
- * Created by Maria on 06.05.2017.
- */
 public class SendAppPage extends BasePageObject {
-
 
     @FindBy(xpath = "//h4[@class='modal-title']")
     public WebElement title;
@@ -42,65 +38,64 @@ public class SendAppPage extends BasePageObject {
     @FindBy(xpath = "//button[contains(text(),'Отправить')]")
     WebElement sendButton;
 
-
-    public void fillField(String fieldName, String value){
-        switch (fieldName){
-            case  "Фамилия":
+    public void fillField(String fieldName, String value) {
+        switch (fieldName) {
+            case "Фамилия":
                 fillField(lastName, value);
                 break;
-            case  "Имя":
+            case "Имя":
                 fillField(firstName, value);
                 break;
-            case  "Отчество":
+            case "Отчество":
                 fillField(middleName, value);
                 break;
-            case  "Телефон":
+            case "Телефон":
                 fillField(phone, value);
                 break;
-            case  "Регион":
+            case "Регион":
                 region.click();
                 region.findElement(By.xpath("//option[text()='" + value + "']")).click();
                 break;
-            case  "Эл. почта":
+            case "Эл. почта":
                 fillField(email, value);
                 break;
-            case  "Дата контакта":
+            case "Дата контакта":
                 fillField(contactDate, value);
                 contactDate.sendKeys(Keys.TAB);
                 break;
-            case  "Комментарии":
+            case "Комментарии":
                 fillField(comment, value);
                 break;
-            default:  throw new AssertionError("Поле '"+fieldName+"' не объявлено на странице");
+            default:
+                throw new AssertionError("Поле '" + fieldName + "' не объявлено на странице");
         }
     }
 
-    public String getFillField(String fieldName){
-        switch (fieldName){
-            case  "Фамилия":
+    public String getFillField(String fieldName) {
+        switch (fieldName) {
+            case "Фамилия":
                 return lastName.getAttribute("value");
-            case  "Имя":
+            case "Имя":
                 return firstName.getAttribute("value");
-            case  "Отчество":
+            case "Отчество":
                 return middleName.getAttribute("value");
-            case  "Телефон":
+            case "Телефон":
                 return phone.getAttribute("value");
-            case  "Регион":
+            case "Регион":
                 String value = region.getAttribute("value");
-                return region.findElement(By.xpath(".//*[@value='"+value+"']")).getText();
-            case  "Эл. почта":
+                return region.findElement(By.xpath(".//*[@value='" + value + "']")).getText();
+            case "Эл. почта":
                 return email.getAttribute("value");
-            case  "Комментарии":
+            case "Комментарии":
                 return comment.getAttribute("value");
-            case  "Дата контакта":
+            case "Дата контакта":
                 return contactDate.getAttribute("value");
         }
         throw new AssertionError("Поле не объявлено на странице");
     }
 
-
-    public void checkFieldErrorMessage(String field, String errorMessage){
-        String xpath = "//*[text()='"+field+"']/..//*[@class='validation-error']";
+    public void checkFieldErrorMessage(String field, String errorMessage) {
+        String xpath = "//*[text()='" + field + "']/..//*[@class='validation-error']";
         String actualValue = getDriver().findElement(By.xpath(xpath)).getText();
         Assert.assertTrue(String.format("Получено значение [%s]. Ожидалось [%s]", actualValue, errorMessage),
                 actualValue.contains(errorMessage));
