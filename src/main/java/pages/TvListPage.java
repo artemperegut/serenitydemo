@@ -14,7 +14,7 @@ public class TvListPage extends BasePageObject {
     @FindBy(id = "glf-pricefrom-var")
     WebElement priceFrom;
 
-    @FindBy(xpath = "//span[contains(text(),'Применить')]")
+    @FindBy(xpath = "//span[contains(text(),'Применить')]/..")
     WebElement confirmButton;
 
     public void selectProducer(String itemName) {
