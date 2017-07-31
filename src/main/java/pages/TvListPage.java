@@ -6,12 +6,12 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class TvListPage {
+public class TvListPage extends BasePageObject {
 
     @FindBy(xpath = "//span[text()='Производитель']/ancestor::div[contains(@class, 'n-filter-block')]")
     WebElement producers;
 
-    @FindBy(xpath = "//span[contains(@class,'input_price_from')]")
+    @FindBy(id = "glf-pricefrom-var")
     WebElement priceFrom;
 
     @FindBy(xpath = "//span[contains(text(),'Применить')]")

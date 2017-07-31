@@ -32,6 +32,6 @@ public class YandexMarketTest extends BaseSteps {
         tvListSteps.selectProducerStep("LG");
         tvListSteps.confirmStep();
         tvListSteps.checkTvListStep(12);
-        
+
     }
 }

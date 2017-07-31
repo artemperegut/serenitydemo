@@ -125,7 +125,7 @@
                     <execution>
                         <configuration>
                             <includes>
-                                <include>**/InsuranceTest.java</include>
+                                <include>**/YandexMarketTest.java</include>
                             </includes>
                         </configuration>
                         <goals>
